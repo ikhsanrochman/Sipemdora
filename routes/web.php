@@ -96,3 +96,12 @@ Route::middleware(['auth', 'role:2'])->group(function () {
 Route::middleware(['auth', 'role:3'])->get('/user/dashboard', function () {
     return view('user.dashboard');
 })->name('user.dashboard');
+
+// Super Admin Routes
+Route::middleware(['auth', 'role:super_admin'])->prefix('super-admin')->name('super_admin.')->group(function () {
+    // ... existing routes ...
+    
+    // Laporan Routes
+    Route::get('/laporan', [App\Http\Controllers\SuperAdmin\LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('/laporan/{id}', [App\Http\Controllers\SuperAdmin\LaporanController::class, 'projectDetail'])->name('laporan.project_detail');
+});
