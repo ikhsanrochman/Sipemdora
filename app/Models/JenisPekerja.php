@@ -15,6 +15,6 @@ class JenisPekerja extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'jenis_pekerja_user');
+        return $this->belongsToMany(User::class, 'jenis_pekerja_user', 'jenis_pekerja_id', 'user_id');
     }
 } 

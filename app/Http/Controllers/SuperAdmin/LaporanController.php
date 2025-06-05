@@ -19,4 +19,8 @@ class LaporanController extends Controller
         $project = Project::findOrFail($id);
         return view('super_admin.laporan_detail', compact('project'));
     }
+<<<<<<< HEAD
 }
+=======
+} 
+>>>>>>> 06f5e070467397c5ca2ce870f83d4a86044a59fc

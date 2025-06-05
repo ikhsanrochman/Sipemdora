@@ -25,7 +25,7 @@ class User extends Authenticatable
         'role_id',
         'no_sib',
         'berlaku',
-        'is_active',
+        'status',
         'npr',
     ];
 
@@ -61,13 +61,14 @@ class User extends Authenticatable
 
     public function jenisPekerja()
     {
-        return $this->belongsToMany(JenisPekerja::class, 'jenis_pekerja_user');
+        return $this->belongsToMany(JenisPekerja::class, 'jenis_pekerja_user', 'user_id', 'jenis_pekerja_id')
+                    ->withTimestamps();
     }
 
     /**
      * Get the pemantauan dosis tld records for the user.
      */
-    public function pemantauanDosisTld(): HasMany
+    public function pemantauanDosisTld()
     {
         return $this->hasMany(PemantauanDosisTld::class);
     }
